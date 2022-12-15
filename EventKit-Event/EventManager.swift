@@ -99,4 +99,14 @@ class EventManager: ObservableObject {
             print(error.localizedDescription)
         }
     }
+    
+    /// イベントの削除
+    func deleteEvent(event: EKEvent){
+        // 削除したいイベントを取得
+        do {
+            try store.remove(event, span: .thisEvent, commit: true)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 }

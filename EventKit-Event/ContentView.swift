@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var eventManager: EventManager
     // sheetのフラグ
     @State var isShowCreateEventView = false
-    // 変更したいイベント(追加の場合はnil)
+    // 変更するイベント(nilの場合は新規追加)
     @State var event: EKEvent?
     
     var body: some View {
@@ -20,9 +20,16 @@ struct ContentView: View {
             NavigationStack {
                 List(aEvent, id: \.self) { event in
                     Button(event.title) {
-                        // 変更したいイベントをCreateEventViewに送る
+                        // 変更の場合は、CreateEventViewに変更したいイベントを送る
                         self.event = event
                         isShowCreateEventView = true
+                    }
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            eventManager.deleteEvent(event: event)
+                        } label: {
+                            Label("削除", systemImage: "trash")
+                        }
                     }
                 }
                 .sheet(isPresented: $isShowCreateEventView) {
@@ -39,7 +46,7 @@ struct ContentView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
-                            // 追加したい場合は、CreateEventViewにイベントを送らない(nilを送る)
+                            // 追加の場合は、CreateEventViewにnilを送る
                             event = nil
                             isShowCreateEventView = true
                         } label: {
