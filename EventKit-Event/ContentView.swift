@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var eventManager: EventManager
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(eventManager.statusMessage)
         }
-        .padding()
     }
 }
 

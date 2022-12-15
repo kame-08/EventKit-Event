@@ -12,6 +12,7 @@ struct EventKit_EventApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(EventManager())
         }
     }
 }
