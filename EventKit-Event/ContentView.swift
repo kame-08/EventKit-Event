@@ -11,7 +11,22 @@ struct ContentView: View {
     @EnvironmentObject var eventManager: EventManager
     
     var body: some View {
-        VStack {
+        if let aEvent = eventManager.events {
+            NavigationStack {
+                List(aEvent, id: \.self) { event in
+                    Text(event.title)
+                }
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        DatePicker("", selection: $eventManager.day, displayedComponents: .date)
+                            .labelsHidden()
+                            .onChange(of: eventManager.day) { newValue in
+                                eventManager.fetchEvent()
+                            }
+                    }
+                }
+            }
+        } else {
             Text(eventManager.statusMessage)
         }
     }
