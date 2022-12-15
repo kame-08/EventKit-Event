@@ -38,6 +38,8 @@ class EventManager: ObservableObject {
             case .authorized:
                 statusMessage = "カレンダーへのアクセスが\n許可されています。"
                 fetchEvent()
+                // カレンダーデータベースの変更を検出したらfetchEvent()を実行する
+                NotificationCenter.default.addObserver(self, selector: #selector(fetchEvent), name: .EKEventStoreChanged, object: store)
             @unknown default:
                 statusMessage = "@unknown default"
             }
@@ -60,6 +62,23 @@ class EventManager: ObservableObject {
         // 述語に一致する全てのイベントを取得
         if let predicate {
             events = store.events(matching: predicate)
+        }
+    }
+    
+    /// イベントの追加
+    func createEvent(title: String, startDate: Date, endDate: Date){
+        // 新規イベントの作成
+        let event = EKEvent(eventStore: store)
+        event.title = title
+        event.startDate = startDate
+        event.endDate = endDate
+        // 保存するカレンダー
+        // デフォルトカレンダー
+        event.calendar = store.defaultCalendarForNewEvents
+        do {
+            try store.save(event, span: .thisEvent, commit: true)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }
