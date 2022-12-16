@@ -20,6 +20,8 @@ struct CreateEventView: View {
     @State var start = Date()
     // eventの終了日時
     @State var end = Date()
+    // eventの終日のフラグ
+    @State var allDay = false
     // eventのURL
     @State var URLText = ""
     
@@ -27,9 +29,10 @@ struct CreateEventView: View {
         NavigationStack{
             List {
                 TextField("タイトル", text: $title)
-                DatePicker("開始", selection: $start)
+                Toggle("終日", isOn: $allDay)
+                DatePicker("開始", selection: $start, displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
                 //in: start...はstartより前を選択できないようにするため
-                DatePicker("終了", selection: $end, in: start...)
+                DatePicker("終了", selection: $end, in: start..., displayedComponents: allDay ? [.date] : [.date, .hourAndMinute])
                     .onChange(of: start) { newValue in
                         // in: start...では、すでに代入済みの値は変更しないため
                         if start > end {
@@ -48,9 +51,9 @@ struct CreateEventView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(event == nil ? "追加" : "変更") {
                         if let event {
-                            eventManager.modifyEvent(event: event, title: title, startDate: start, endDate: end, url: URL(string: URLText) ?? nil)
+                            eventManager.modifyEvent(event: event, title: title, startDate: start, endDate: end, isAllDay: allDay, url: URL(string: URLText) ?? nil)
                         } else{
-                            eventManager.createEvent(title: title, startDate: start, endDate: end, url: URL(string: URLText) ?? nil)
+                            eventManager.createEvent(title: title, startDate: start, endDate: end, isAllDay: allDay, url: URL(string: URLText) ?? nil)
                         }
                         // sheetを閉じる
                         dismiss()
@@ -71,6 +74,7 @@ struct CreateEventView: View {
                 self.title = event.title
                 self.start = event.startDate
                 self.end = event.endDate
+                self.allDay = event.isAllDay
                 if let url = event.url {
                     self.URLText = url.absoluteString
                 }

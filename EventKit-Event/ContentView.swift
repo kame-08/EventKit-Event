@@ -18,13 +18,13 @@ struct ContentView: View {
     var body: some View {
         if let aEvent = eventManager.events {
             NavigationStack {
-                List(aEvent, id: \.self) { event in
+                List(aEvent, id: \.eventIdentifier) { event in
                     Button {
                         // 変更の場合は、CreateEventViewに変更したいイベントを送る
                         self.event = event
                         isShowCreateEventView = true
                     } label: {
-                        EventView(event: event, viewDate: eventManager.day)
+                        EventView(event: event)
                     }
                     .buttonStyle(.plain)
                     .contextMenu {

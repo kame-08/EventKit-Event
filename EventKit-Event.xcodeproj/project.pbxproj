@@ -14,6 +14,7 @@
 		2AA3E71C294B3EA400DD5EF0 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3E71B294B3EA400DD5EF0 /* EventManager.swift */; };
 		2AA3E71E294B58A000DD5EF0 /* CreateEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3E71D294B58A000DD5EF0 /* CreateEventView.swift */; };
 		2AA3E720294B713600DD5EF0 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AA3E71F294B713600DD5EF0 /* EventView.swift */; };
+		2AD8D049294C105100E3937A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2AD8D04B294C105100E3937A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,8 @@
 		2AA3E71B294B3EA400DD5EF0 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		2AA3E71D294B58A000DD5EF0 /* CreateEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventView.swift; sourceTree = "<group>"; };
 		2AA3E71F294B713600DD5EF0 /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		2AD8D04A294C105100E3937A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2AD8D04C294C105500E3937A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 				2AA3E71F294B713600DD5EF0 /* EventView.swift */,
 				2AA3E70F294B3DE100DD5EF0 /* Assets.xcassets */,
 				2AA3E711294B3DE100DD5EF0 /* Preview Content */,
+				2AD8D04B294C105100E3937A /* Localizable.strings */,
 			);
 			path = "EventKit-Event";
 			sourceTree = "<group>";
@@ -118,6 +122,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 2AA3E6FF294B3DE000DD5EF0;
 			productRefGroup = 2AA3E709294B3DE000DD5EF0 /* Products */;
@@ -135,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2AA3E713294B3DE100DD5EF0 /* Preview Assets.xcassets in Resources */,
+				2AD8D049294C105100E3937A /* Localizable.strings in Resources */,
 				2AA3E710294B3DE100DD5EF0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +161,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		2AD8D04B294C105100E3937A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2AD8D04A294C105100E3937A /* en */,
+				2AD8D04C294C105500E3937A /* ja */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		2AA3E714294B3DE100DD5EF0 /* Debug */ = {
@@ -318,6 +336,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

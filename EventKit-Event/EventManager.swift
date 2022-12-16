@@ -66,18 +66,14 @@ class EventManager: ObservableObject {
     }
     
     /// イベントの追加
-    func createEvent(title: String, startDate: Date, endDate: Date, url: URL?){
+    func createEvent(title: String, startDate: Date, endDate: Date, isAllDay: Bool, url: URL?){
         // 新規イベントの作成
         let event = EKEvent(eventStore: store)
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
-        if let url {
+        event.isAllDay = isAllDay
             event.url = url
-            print(url)
-        } else {
-            print("urlなし")
-        }
         // 保存するカレンダー
         // デフォルトカレンダー
         event.calendar = store.defaultCalendarForNewEvents
@@ -89,13 +85,13 @@ class EventManager: ObservableObject {
     }
     
     /// イベントの変更
-    func modifyEvent(event: EKEvent,title: String, startDate: Date, endDate: Date, url: URL?){
+    func modifyEvent(event: EKEvent,title: String, startDate: Date, endDate: Date, isAllDay: Bool, url: URL?){
         // 変更したいイベントを取得
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
+        event.isAllDay = isAllDay
         event.url = url
-        print(url)
         // 保存するカレンダー
         // デフォルトカレンダー
         event.calendar = store.defaultCalendarForNewEvents
