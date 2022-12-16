@@ -94,12 +94,8 @@ class EventManager: ObservableObject {
         event.title = title
         event.startDate = startDate
         event.endDate = endDate
-        if let url {
-            event.url = url
-            print(url)
-        } else {
-            print("urlなし")
-        }
+        event.url = url
+        print(url)
         // 保存するカレンダー
         // デフォルトカレンダー
         event.calendar = store.defaultCalendarForNewEvents
