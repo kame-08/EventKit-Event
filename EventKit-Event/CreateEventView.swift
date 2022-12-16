@@ -20,7 +20,9 @@ struct CreateEventView: View {
     @State var start = Date()
     // eventの終了日時
     @State var end = Date()
-
+    // eventのURL
+    @State var URLText = ""
+    
     var body: some View {
         NavigationStack{
             List {
@@ -34,14 +36,21 @@ struct CreateEventView: View {
                             end = start
                         }
                     }
+                HStack {
+                    TextField("URL", text: $URLText)
+                    PasteButton(payloadType: URL.self) { Paste in
+                        URLText = Paste[0].absoluteString
+                    }
+                    .labelStyle(.iconOnly)
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(event == nil ? "追加" : "変更") {
                         if let event {
-                            eventManager.modifyEvent(event: event, title: title, startDate: start, endDate: end)
+                            eventManager.modifyEvent(event: event, title: title, startDate: start, endDate: end, url: URL(string: URLText) ?? nil)
                         } else{
-                            eventManager.createEvent(title: title, startDate: start, endDate: end)
+                            eventManager.createEvent(title: title, startDate: start, endDate: end, url: URL(string: URLText) ?? nil)
                         }
                         // sheetを閉じる
                         dismiss()
@@ -62,6 +71,9 @@ struct CreateEventView: View {
                 self.title = event.title
                 self.start = event.startDate
                 self.end = event.endDate
+                if let url = event.url {
+                    self.URLText = url.absoluteString
+                }
             }
         }
     }

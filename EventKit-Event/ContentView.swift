@@ -19,19 +19,33 @@ struct ContentView: View {
         if let aEvent = eventManager.events {
             NavigationStack {
                 List(aEvent, id: \.self) { event in
-                    Button(event.title) {
+                    Button {
                         // 変更の場合は、CreateEventViewに変更したいイベントを送る
                         self.event = event
                         isShowCreateEventView = true
+                    } label: {
+                        EventView(event: event, viewDate: eventManager.day)
                     }
+                    .buttonStyle(.plain)
                     .contextMenu {
+                        Button() {
+                            // 変更の場合は、CreateEventViewに変更したいイベントを送る
+                            self.event = event
+                            isShowCreateEventView = true
+                        } label: {
+                            Label("編集", systemImage: "pencil")
+                        }
+
                         Button(role: .destructive) {
                             eventManager.deleteEvent(event: event)
                         } label: {
                             Label("削除", systemImage: "trash")
                         }
                     }
+                    // リストの区切り線を隠す
+                    .listRowSeparator(.hidden)
                 }
+                .listStyle(.plain)
                 .sheet(isPresented: $isShowCreateEventView) {
                     CreateEventView(event: $event)
                         .presentationDetents([.medium])
