@@ -42,7 +42,7 @@ func dateFormatter(date: Date, viewDate: Date) -> String{
         dateFormatter.timeStyle = .short
     }
     
-    return dateFormatter.string(from: Date())
+    return dateFormatter.string(from: date)
 }
 
 struct EventView_Previews: PreviewProvider {
