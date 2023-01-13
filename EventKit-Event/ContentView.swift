@@ -35,7 +35,7 @@ struct ContentView: View {
                         } label: {
                             Label("編集", systemImage: "pencil")
                         }
-
+                        
                         Button(role: .destructive) {
                             eventManager.deleteEvent(event: event)
                         } label: {
@@ -78,5 +78,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(EventManager())
     }
 }
