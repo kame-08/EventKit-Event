@@ -52,8 +52,8 @@ class EventManager: ObservableObject {
         // 指定した日付の0:00
         let start = Calendar.current.startOfDay(for: day)
         // 終了日コンポーネントの作成
-        // 指定した日付の23:59:59
-        let end = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: start)
+        // 指定した日付の23:59:1
+        let end = Calendar.current.date(bySettingHour: 23, minute: 59, second: 1, of: start)
         // イベントストアのインスタンスメソッドから述語を作成
         var predicate: NSPredicate? = nil
         if let end {

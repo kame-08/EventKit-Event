@@ -297,7 +297,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EventKit-Event/Preview Content\"";
-				DEVELOPMENT_TEAM = NS2U56N5HL;
+				DEVELOPMENT_TEAM = BGS5U89ZQT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "カレンダーは、イベントの表示に使用されます。";
@@ -327,7 +327,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EventKit-Event/Preview Content\"";
-				DEVELOPMENT_TEAM = NS2U56N5HL;
+				DEVELOPMENT_TEAM = BGS5U89ZQT;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSCalendarsUsageDescription = "カレンダーは、イベントの表示に使用されます。";
